@@ -29,3 +29,13 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+
+# Vite cache
+.vite/
+
+# Setup scripts (repo scaffolding only)
+setup-git.sh
+continue-git.sh
+
+# Claude Code internals
+.claude/
