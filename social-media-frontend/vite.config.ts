@@ -12,6 +12,7 @@ export default defineConfig({
   server: {
     port: 4001,
     host: '0.0.0.0',
+    allowedHosts: ['node101.cs.colman.ac.il'],
     proxy: {
       '/api': {
         target: 'http://localhost:4000',
