@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import RegisterPage from '../RegisterPage';
 import { authApi } from '../../api/auth.api';
+import type { AuthResponse } from '../../api/auth.api';
 import { useAuth } from '../../context/AuthContext';
 
 // ─── Mocks ───────────────────────────────────────────────────────────────────
@@ -311,7 +312,7 @@ describe('RegisterPage', () => {
   describe('Submit button states', () => {
     it('shows "Creating account..." while the request is pending', async () => {
       const user = userEvent.setup();
-      let resolveRegister!: (v: unknown) => void;
+      let resolveRegister!: (value: AuthResponse | PromiseLike<AuthResponse>) => void;
       vi.mocked(authApi.register).mockReturnValue(
         new Promise((r) => (resolveRegister = r))
       );
