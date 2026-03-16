@@ -1,11 +1,16 @@
 import multer, { FileFilterCallback } from 'multer';
 import path from 'path';
 import crypto from 'crypto';
+import fs from 'fs';
 import { Request } from 'express';
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const UPLOADS_BASE = path.join(__dirname, '../../uploads');
+
+// Ensure upload directories exist on startup
+fs.mkdirSync(path.join(UPLOADS_BASE, 'posts'), { recursive: true });
+fs.mkdirSync(path.join(UPLOADS_BASE, 'avatars'), { recursive: true });
 
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => {
