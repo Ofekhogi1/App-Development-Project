@@ -19,7 +19,7 @@ type FormValues = z.infer<typeof schema>;
 const BASE_URL = import.meta.env.VITE_API_URL || '';
 
 const CompleteProfilePage: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, logout } = useAuth();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
@@ -127,6 +127,14 @@ const CompleteProfilePage: React.FC = () => {
             {isLoading ? 'Saving...' : 'Continue'}
           </button>
         </form>
+        <p style={{ textAlign: 'center', marginTop: '1rem', fontSize: '0.875rem' }}>
+          <button
+            onClick={() => { logout().then(() => navigate('/login')); }}
+            style={{ background: 'none', border: 'none', color: 'var(--color-primary)', cursor: 'pointer', textDecoration: 'underline' }}
+          >
+            Sign out
+          </button>
+        </p>
       </div>
     </div>
   );
