@@ -24,5 +24,7 @@ export const env = {
   SERVER_URL: process.env.SERVER_URL || 'http://localhost:5001',
   CLIENT_URL: process.env.CLIENT_URL || 'http://localhost:3000',
   COOKIE_DOMAIN: process.env.COOKIE_DOMAIN || 'localhost',
+  SSL_CERT: process.env.SSL_CERT || '',
+  SSL_KEY: process.env.SSL_KEY || '',
   isProd: process.env.NODE_ENV === 'production',
 };
